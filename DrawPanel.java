@@ -6,9 +6,16 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * DrawPanel class
+ * performs graphic handling
+ * is Observer
+ * @author Jin Wu
+ */
 public class DrawPanel extends JPanel implements Observer, MouseListener {
     DotMatrix dotMatrix;
     ArrayList<Dot> dots;
+    ArrayList<Line> lines;
     public DrawPanel(DotMatrix dotMatrix) {
         super();
         this.dotMatrix = dotMatrix;
@@ -22,11 +29,17 @@ public class DrawPanel extends JPanel implements Observer, MouseListener {
                 dot.draw(g);
             }
         }
+        if(this.lines != null){
+            for(Line line: this.lines){
+                line.draw(g);
+            }
+        }
     }
 
     @Override
     public void update(Observable o, Object arg) {
         this.dots = ((DotMatrix)o).getDots();
+        this.lines = ((DotMatrix)o).getLines();
         repaint();
     }
 

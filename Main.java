@@ -16,6 +16,7 @@ public class Main extends JFrame implements ActionListener {
     /**
      * The main method which sets the size of the application
      * and its visibility
+     * @param args
      */
     public static void main(String[] args){
         Main main = new Main();
@@ -51,10 +52,17 @@ public class Main extends JFrame implements ActionListener {
         setLayout(layout);
         add(westPanel, BorderLayout.WEST);
         add(centerPanel, BorderLayout.CENTER);
+        // actionListeners
         clusterButton.addActionListener(this);
         lineButton.addActionListener(this);
         runButton.addActionListener(this);
     }
+
+    /**
+     * recognizes user running the application
+     * will set booleans cluster and line for application processes
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println(e.getActionCommand());
